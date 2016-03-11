@@ -1,0 +1,48 @@
+$color: rgb(255,215,7);
+$colorDark: darken($color, 10%) transparent;
+
+#tasks_list, #tasks_list > ul{
+  padding-left: 0px;
+}
+.pPostIt {
+  font-family: helvetica;
+  font-size: 18px;
+  font-weight: bold;
+}
+.post-it-note {
+   width: 20%;
+   min-width: 25em;
+   padding: 10px;
+   background: $color;
+   position: relative;
+   min-height: 13em;
+}
+.post-it-note:after {
+   content: "";
+   position: absolute;
+   bottom: -2em;
+   left: 0;
+   right: 2em;
+   border-width: 1em;
+   border-style: solid;
+   border-color: $color;
+}
+.post-it-note:before {
+   content: "";
+   position: absolute;
+   bottom: -2em;
+   right: 0;
+   border-width: 2em 2em 0 0;
+   border-style: solid;
+   border-color: $colorDark;
+}
+.hrPostIt{
+  margin-top: 3px;
+  margin-bottom: 5px;
+}
+.checkIcon{
+  float: right;
+}
+.muteIcon{
+  
+}
