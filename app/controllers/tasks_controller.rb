@@ -6,7 +6,7 @@ class TasksController < ApplicationController
 
   def index
     myTasks = Task.where(:user_id => current_user.id)
-    publicTasks = Task.where(:public => true)
+    publicTasks = Task.where(:public => true).where.not(:user_id => current_user.id)
     
     allTasks = myTasks + publicTasks
     @tasks = allTasks.sort_by{|e| e[:created_at]}

@@ -31,7 +31,7 @@ $colorDark: darken($color, 10%) transparent;
 }
 .post-it-note, .post-it-note-public {
    width: 20%;
-   min-width: 25em;
+   min-width: 26em;
    padding: 10px;
    position: relative;
    min-height: 17em;
@@ -68,6 +68,6 @@ $colorDark: darken($color, 10%) transparent;
 }
 
 .task_subtasks_description{
-  width: 33%;
+  width: 33.33%;
   float: left;
 }
