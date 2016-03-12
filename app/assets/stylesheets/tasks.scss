@@ -1,4 +1,6 @@
-$color: rgb(255,215,7);
+$color-public: #8BC34A;
+$colorDark-public: darken($color-public, 10%) transparent;
+$color: rgb(255,215,70);
 $colorDark: darken($color, 10%) transparent;
 
 #tasks_list, #tasks_list > ul{
@@ -6,18 +8,35 @@ $colorDark: darken($color, 10%) transparent;
 }
 .pPostIt {
   font-family: helvetica;
-  font-size: 18px;
+  font-size: 12px;
   font-weight: bold;
 }
-.post-it-note {
+.post-it-note{
+   background: $color;
+}
+.post-it-note-public{
+   background: $color-public;
+}
+.post-it-note:after{
+   border-color: $color;
+}
+.post-it-note-public:after{
+   border-color: $color-public;
+}
+.post-it-note:before{
+   border-color: $colorDark;
+}
+.post-it-note-public:before{
+   border-color: $colorDark-public;
+}
+.post-it-note, .post-it-note-public {
    width: 20%;
    min-width: 25em;
    padding: 10px;
-   background: $color;
    position: relative;
-   min-height: 13em;
+   min-height: 17em;
 }
-.post-it-note:after {
+.post-it-note:after, .post-it-note-public:after {
    content: "";
    position: absolute;
    bottom: -2em;
@@ -25,16 +44,14 @@ $colorDark: darken($color, 10%) transparent;
    right: 2em;
    border-width: 1em;
    border-style: solid;
-   border-color: $color;
 }
-.post-it-note:before {
+.post-it-note:before, .post-it-note-public:before {
    content: "";
    position: absolute;
    bottom: -2em;
    right: 0;
    border-width: 2em 2em 0 0;
    border-style: solid;
-   border-color: $colorDark;
 }
 .hrPostIt{
   margin-top: 3px;
@@ -44,7 +61,13 @@ $colorDark: darken($color, 10%) transparent;
   float: right;
 }
 .taskHeader{
+  vertical-align: super;
   font-size: 18px;
   font-weight: bold;
-  padding: 10px;
+  padding-left: 12px;
+}
+
+.task_subtasks_description{
+  width: 33%;
+  float: left;
 }

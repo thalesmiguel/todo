@@ -8,14 +8,20 @@ class TasksController < ApplicationController
     myTasks = Task.where(:user_id => current_user.id)
     publicTasks = Task.where(:public => true)
     
-    @tasks = myTasks + publicTasks
+    allTasks = myTasks + publicTasks
+    @tasks = allTasks.sort_by{|e| e[:created_at]}
+
+    @newTask = Task.new
+    6.times do
+      @newTask.subtasks.build
+    end
+
   end
 
   def show
   end
 
   def new
-    @task = Task.new
   end
 
   def edit
@@ -63,6 +69,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:description, :public, :user_id)
+      params.require(:task).permit!
     end
 end

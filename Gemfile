@@ -19,6 +19,7 @@ gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem 'unobtrusive_flash', '>=3'
 gem 'simple_form'
+gem 'best_in_place', '~> 3.0.1'
 
 
 group :development, :test do

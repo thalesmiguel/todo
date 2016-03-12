@@ -1,16 +1,19 @@
 <div class="col-xs-6 col-md-4" id="<%= task.id %>">
-  <div class="post-it-note">
-
-    <% if current_user.id != task.user_id %>
+  <% if task.user_id != current_user.id %>
+    <div class="post-it-note-public">
+  <% else %> 
+    <div class="post-it-note">
+  <% end %>
+    
+    <% if task.public %>
       <span class="glyphicon glyphicon-volume-up fa-2x" title="Public Task"></span>
-      <span class="taskHeader"> <%= task.user.email %> </span>
+      <span class="taskHeader"> <%= task.description %> </span>
     <% else %>
-      <% if task.public %>
-        <span class="glyphicon glyphicon-volume-up fa-2x" title="Public Task"></span>
-      <% else %>  
-        <span class="glyphicon glyphicon-volume-off fa-2x" title="Private Task"></span>
-      <% end %>
+      <span class="glyphicon glyphicon-volume-off fa-2x" title="Private Task"></span> 
+      <span class="taskHeader"> <%= best_in_place task, :description %> </span> 
+    <% end %>  
 
+    <% if task.user_id == current_user.id %>
       <%= link_to task_path(task), method: 'delete', remote: true do %>
         <span class="checkIcon glyphicon glyphicon-check fa-2x" style='float: right;'></span>
       <% end %>
@@ -18,7 +21,18 @@
 
     <br>
     <hr class="hrPostIt">
-    <p class="pPostIt"><%= task.description %></p>
+      <% if task.user_id != current_user.id %>
+        <i>Created by <%= task.user.email %></i>
+      <% end %>
+
+      <p class="pPostIt"><%#= task.description %></p>
+        <% task.subtasks.each do |subtask|%>
+          <% if task.user_id != current_user.id %>
+            <li><%= subtask.description %></li>
+          <% else %>
+            <li><%= best_in_place subtask, :description %></li>
+          <% end %>
+        <% end %>
   </div>
 
   <br><br>

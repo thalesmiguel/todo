@@ -1,4 +1,4 @@
-html { 
+html, body { 
   background: #4b6cb7; /* fallback for old browsers */
   background: -webkit-radial-gradient(to left, #4b6cb7 , #182848); /* Chrome 10-25, Safari 5.1-6 */
   background: radial-gradient(to left, #4b6cb7 , #182848); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -12,8 +12,8 @@ footer {
    width:100%;
 }
 
-body{
-    margin: auto;
-    width: 80%;
-    padding-bottom: 50px;
+.divFloat{
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+  padding-bottom: 50px; 
 }

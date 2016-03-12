@@ -1,20 +1,27 @@
 <h1>New Task</h1>
 <br>
 
-<%= simple_form_for Task.new, remote: true do |f| %>
+<%= simple_form_for @newTask, remote: true do |f| %>
   <container class="unobtrusive-flash-container"></container>
 
   <div class="form-inputs">
-    <%= f.input :description, label: false, placeholder: "What needs to be done'?" %>
+    <%= f.input :description, label: false, placeholder: "What needs to be done?" %>
     <%= f.input :public %>
   </div>
+
+  <div>
+    <%= f.simple_fields_for :subtasks do |subtask_form| %>
+      <%= subtask_form.input :description, label: false, placeholder: "Sub-Task"%>
+    <% end %>
+  </div>
+
   <div class="form-actions">
     <%= f.button :submit, :class => "btn btn-primary" %>
   </div>
 
 <% end %>
 <hr>
-<h1>My Tasks</h1>
+<h1>What <strong>ToDo</strong>?</h1>
 <div class="row" id="tasks_list">
   <%= render @tasks %>  
 </div>
